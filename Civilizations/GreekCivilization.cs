@@ -11,5 +11,8 @@ namespace PyP2_ExamenIndividual1
         public const string NAME = "Civilización Griega";
 
         public GreekCivilization() : base(NAME, new Greek()) { }
+
+        public override Citizen GetOriginalCitizen() => new Greek();
+
     }
 }

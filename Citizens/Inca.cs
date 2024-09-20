@@ -10,11 +10,14 @@ namespace PyP2_ExamenIndividual1
     {
         private const string NAME = "Inca";
 
-        private const int FARMING_POINTS = 2;
-        private const int FISHING_POINTS = 1;
-        private const int HARVESTING_POINTS = 3;
-        private const int MINING_POINTS = 4;
+        private const int BASE_FARMING_POINTS = 2;
+        private const int BASE_FISHING_POINTS = 1;
+        private const int BASE_HARVESTING_POINTS = 3;
+        private const int BASE_MINING_POINTS = 4;
 
-        public Inca() : base(NAME,FARMING_POINTS, FISHING_POINTS, HARVESTING_POINTS, MINING_POINTS) { }
+        private const int PRICE = 10;
+        private const int IMPORT_PRICE = 20;
+
+        public Inca() : base(NAME, BASE_FARMING_POINTS, BASE_FISHING_POINTS, BASE_HARVESTING_POINTS, BASE_MINING_POINTS, PRICE, IMPORT_PRICE) { }
     }
 }

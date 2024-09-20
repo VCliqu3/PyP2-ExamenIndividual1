@@ -11,5 +11,8 @@ namespace PyP2_ExamenIndividual1
         public const string NAME = "Civilización Inca";
 
         public IncanCivilization() : base(NAME, new Inca()) { }
+
+        public override Citizen GetOriginalCitizen() => new Inca();
+
     }
 }
