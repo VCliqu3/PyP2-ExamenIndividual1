@@ -8,11 +8,13 @@ namespace PyP2_ExamenIndividual1
 {
     public class Greek : Citizen
     {
+        private const string NAME = "Griego";
+
         private const int FARMING_POINTS = 3;
         private const int FISHING_POINTS = 2;
         private const int HARVESTING_POINTS = 4;
         private const int MINING_POINTS = 1;
 
-        public Greek() : base(FARMING_POINTS, FISHING_POINTS, HARVESTING_POINTS, MINING_POINTS) { }
+        public Greek() : base(NAME, FARMING_POINTS, FISHING_POINTS, HARVESTING_POINTS, MINING_POINTS) { }
     }
 }
