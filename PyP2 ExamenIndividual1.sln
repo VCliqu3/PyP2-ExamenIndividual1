@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35303.130
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PyP2 ExamenIndividual1", "PyP2 ExamenIndividual1.csproj", "{6629F65C-D510-41EA-AA89-F8947F879D25}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6629F65C-D510-41EA-AA89-F8947F879D25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6629F65C-D510-41EA-AA89-F8947F879D25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6629F65C-D510-41EA-AA89-F8947F879D25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6629F65C-D510-41EA-AA89-F8947F879D25}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7AB53A9E-5B9C-41F0-8263-FEC714CE1463}
+	EndGlobalSection
+EndGlobal
