@@ -8,6 +8,7 @@ namespace PyP2_ExamenIndividual1
 {
     public interface IHasFarmingPoints
     {
-        
+        public int GetFarmingPoints();
+        public void IncreaseFarmingPoints(int quantity);
     }
 }

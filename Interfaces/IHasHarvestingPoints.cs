@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace PyP2_ExamenIndividual1
 {
-    public interface IHasFishingPoints
+    public interface IHasHarvestingPoints
     {
-        public int GetFishingPoints();
-        public void IncreaseFishingPoints(int quantity);
+        public int GetHarvestingPoints();
+        public void IncreaseHarvestingPoints(int quantity);
     }
 }
