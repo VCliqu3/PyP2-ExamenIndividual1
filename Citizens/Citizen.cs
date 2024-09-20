@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PyP2_ExamenIndividual1
 {
-    public abstract class Citizen : IHasFarmingPoints, IHasFishingPoints, IHasHarvestingPoints, IHasMiningPoints
+    public abstract class Citizen : IHasFarmingPointsIndividual, IHasFishingPointsIndividual, IHasHarvestingPointsIndividual, IHasMiningPointsIndividual
     {
         public string name;
 
@@ -15,13 +15,18 @@ namespace PyP2_ExamenIndividual1
         public int harvestingPoints;
         public int miningPoints;
 
-        public Citizen(string name, int farmingPoints, int fishingPoints, int harvestingPoints, int miningPoints)
+        public int price;
+        public int importPrice;
+
+        public Citizen(string name, int farmingPoints, int fishingPoints, int harvestingPoints, int miningPoints, int price, int importPrice)
         {
             this.name = name;
             this.farmingPoints = farmingPoints;
             this.fishingPoints = fishingPoints;
             this.harvestingPoints = harvestingPoints;
             this.miningPoints = miningPoints;
+            this.price = price;
+            this.importPrice = importPrice; 
         }
 
         public int GetFarmingPoints() => farmingPoints;

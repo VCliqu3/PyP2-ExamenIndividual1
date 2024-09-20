@@ -11,5 +11,8 @@ namespace PyP2_ExamenIndividual1
         public const string NAME = "Civilización Maya";
 
         public MayanCivilization() : base(NAME, new Mayan()) { }
+
+        public override Citizen GetOriginalCitizen() => new Mayan();
+
     }
 }

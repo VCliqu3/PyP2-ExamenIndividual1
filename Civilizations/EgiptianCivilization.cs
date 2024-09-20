@@ -11,5 +11,7 @@ namespace PyP2_ExamenIndividual1.Civilizations
         public const string NAME = "Civilización Egipcia";
 
         public EgiptianCivilization() : base(NAME, new Egiptian()) { }
+
+        public override Citizen GetOriginalCitizen() => new Egiptian();
     }
 }
