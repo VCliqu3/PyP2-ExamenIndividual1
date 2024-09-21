@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PyP2_ExamenIndividual1
 {
-    public abstract class Citizen : IHasFarmingPointsIndividual, IHasFishingPointsIndividual, IHasHarvestingPointsIndividual, IHasMiningPointsIndividual
+    public abstract class Citizen : IHasFarmingPoints, IHasFishingPoints, IHasHarvestingPoints, IHasMiningPoints
     {
         public string name;
 

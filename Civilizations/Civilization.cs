@@ -19,26 +19,33 @@ namespace PyP2_ExamenIndividual1
             citizens = new List<Citizen>();
         }
 
-        #region AveragePoints
-
         public abstract Citizen GetOriginalCitizen();
 
-        private int GetAverageFarmingPoints()
+
+        public int GetFarmingPoints() 
         {
             int citizenCount = citizens.Count;
             if (citizenCount == 0) return 0;
 
             int pointsAccumulator = 0;
 
-            foreach(Citizen citizen in citizens)
+            foreach (Citizen citizen in citizens)
             {
                 pointsAccumulator += citizen.GetFarmingPoints();
             }
 
-            return pointsAccumulator/citizenCount;
+            return pointsAccumulator / citizenCount;
         }
 
-        private int GetAverageFishingPoints()
+        public void IncreaseFarmingPoints(int quantity)
+        {
+            foreach(Citizen citizen in citizens)
+            {
+                citizen.IncreaseFarmingPoints(quantity);
+            }
+        }
+
+        public int GetFishingPoints()
         {
             int citizenCount = citizens.Count;
             if (citizenCount == 0) return 0;
@@ -53,7 +60,15 @@ namespace PyP2_ExamenIndividual1
             return pointsAccumulator / citizenCount;
         }
 
-        private int GetAverageHarvestingPoints()
+        public void IncreaseFishingPoints(int quantity)
+        {
+            foreach (Citizen citizen in citizens)
+            {
+                citizen.IncreaseFishingPoints(quantity);
+            }
+        }
+
+        public int GetHarvestingPoints()
         {
             int citizenCount = citizens.Count;
             if (citizenCount == 0) return 0;
@@ -68,7 +83,15 @@ namespace PyP2_ExamenIndividual1
             return pointsAccumulator / citizenCount;
         }
 
-        private int GetAverageMiningPoints()
+        public void IncreaseHarvestingPoints(int quantity)
+        {
+            foreach (Citizen citizen in citizens)
+            {
+                citizen.IncreaseHarvestingPoints(quantity);
+            }
+        }
+
+        public int GetMiningPoints()
         {
             int citizenCount = citizens.Count;
             if (citizenCount == 0) return 0;
@@ -83,15 +106,12 @@ namespace PyP2_ExamenIndividual1
             return pointsAccumulator / citizenCount;
         }
 
-        #endregion
-
-
-        public int GetFarmingPoints() => GetAverageFarmingPoints();
-
-        public int GetFishingPoints() => GetAverageFishingPoints();
-
-        public int GetHarvestingPoints() => GetAverageHarvestingPoints();
-
-        public int GetMiningPoints() => GetAverageMiningPoints();
+        public void IncreaseMiningPoints(int quantity)
+        {
+            foreach (Citizen citizen in citizens)
+            {
+                citizen.IncreaseMiningPoints(quantity);
+            }
+        }
     }
 }

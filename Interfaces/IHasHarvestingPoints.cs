@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace PyP2_ExamenIndividual1
 {
-    public interface IHasFarmingPointsIndividual: IHasFarmingPoints
+    public interface IHasHarvestingPoints
     {
-        public void IncreaseFarmingPoints(int quantity);
+        public int GetHarvestingPoints();
+        public void IncreaseHarvestingPoints(int quantity);
+
     }
 }

@@ -10,7 +10,7 @@ namespace PyP2_ExamenIndividual1
 {
     public class Controller
     {
-        private Civilization civilization;
+        private Civilization civilization; 
         private List<Citizen> citizens = new List<Citizen>();
 
         private int money;

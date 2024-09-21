@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace PyP2_ExamenIndividual1
 {
-    public interface IHasFarmingPoints
+    public interface IHasMiningPoints
     {
-        public int GetFarmingPoints();
+        public int GetMiningPoints();
+        public void IncreaseMiningPoints(int quantity);
+
     }
 }
