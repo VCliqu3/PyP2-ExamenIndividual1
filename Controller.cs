@@ -22,6 +22,8 @@ namespace PyP2_ExamenIndividual1
         private const int MINING_GOODS_PRICE = 5;
 
         private const int MONEY_TO_WIN = 1000;
+
+        private const int TRADE_POINTS_GOODS_RATIO = 100;
         #endregion
 
         public void Execute() 
@@ -41,6 +43,7 @@ namespace PyP2_ExamenIndividual1
                 {
                     Console.WriteLine("\nHas Completado el juego!");
                     gameEnded = true;
+                    continue;
                 }
 
                 GetGoodsEndOfTurn();
@@ -296,7 +299,33 @@ namespace PyP2_ExamenIndividual1
 
         private void ExchangeGoodsForPoints()
         {
+            Console.WriteLine($"\nSelecciona el bien que quieres intercambiar por puntos:");
 
+            Console.WriteLine($"1.- Carne");
+            Console.WriteLine($"2.- Pescado");
+            Console.WriteLine($"3.- Cosechas");
+            Console.WriteLine($"4.- Minerales");
+            Console.WriteLine($"5.- Volver");
+
+            int option = ChooseNumberOption(5);
+
+            switch (option)
+            {
+                case 1:
+                    TryExchangeFarmingPoints();
+                    break;
+                case 2:
+                    TryExchangeFishingPoints();
+                    break;
+                case 3:
+                    TryExchangeHarvestingPoints();
+                    break;
+                case 4:
+                    TryExchangeMiningPoints();
+                    break;
+                case 5:
+                    break;
+            }
         }
 
         private void SkipTurn()
@@ -330,7 +359,7 @@ namespace PyP2_ExamenIndividual1
         {
             if (civilization.GetFarmingGoods() <= 0)
             {
-                Console.WriteLine("No tienes ninguna unidad de carne");
+                Console.WriteLine("\nNo tienes ninguna unidad de carne");
                 return;
             }
 
@@ -347,7 +376,7 @@ namespace PyP2_ExamenIndividual1
         {
             if (civilization.GetFishingGoods() <= 0)
             {
-                Console.WriteLine("No tienes ninguna unidad de pescado");
+                Console.WriteLine("\nNo tienes ninguna unidad de pescado");
                 return;
             }
 
@@ -364,12 +393,12 @@ namespace PyP2_ExamenIndividual1
         {
             if (civilization.GetHarvestingGoods() <= 0)
             {
-                Console.WriteLine("No tienes ninguna unidad de cosecha");
+                Console.WriteLine("\nNo tienes ninguna unidad de cosecha");
                 return;
             }
 
             int quantityToSell = ChooseNumberToSellGood(civilization.GetHarvestingGoods(), "cosecha");
-            civilization.ReduceHarvestinGoods(quantityToSell);
+            civilization.ReduceHarvestingGoods(quantityToSell);
 
             int moneyToObtain = quantityToSell * HARVESTING_GOODS_PRICE;
             civilization.IncreaseMoney(moneyToObtain);
@@ -381,7 +410,7 @@ namespace PyP2_ExamenIndividual1
         {
             if (civilization.GetMiningGoods() <= 0)
             {
-                Console.WriteLine("No tienes ninguna unidad de mineral");
+                Console.WriteLine("\nNo tienes ninguna unidad de mineral");
                 return;
             }
 
@@ -395,12 +424,84 @@ namespace PyP2_ExamenIndividual1
         }
         #endregion
 
+        #region TryExchangePoints
+        private void TryExchangeFarmingPoints()
+        {
+            if (civilization.GetFarmingGoods() < TRADE_POINTS_GOODS_RATIO)
+            {
+                Console.WriteLine($"\nNo tienes suficientes unidad de carne (Min. {TRADE_POINTS_GOODS_RATIO})");
+                return;
+            }
+
+            int pointsNumber = ChooseNumberToExchangePoints(civilization.GetFarmingGoods(), "carne", "Farmeo");
+            int goodsToExchange = pointsNumber * TRADE_POINTS_GOODS_RATIO;
+
+            civilization.ReduceFarmingGoods(goodsToExchange);
+            civilization.IncreaseFarmingPoints(pointsNumber);
+
+            Console.WriteLine($"Has intercambiado {goodsToExchange} unidades de carne por {pointsNumber} Puntos de Farmeo!");
+        }
+
+        private void TryExchangeFishingPoints()
+        {
+            if (civilization.GetFishingGoods() < TRADE_POINTS_GOODS_RATIO)
+            {
+                Console.WriteLine($"\nNo tienes suficientes unidad de pescado (Min. {TRADE_POINTS_GOODS_RATIO})");
+                return;
+            }
+
+            int pointsNumber = ChooseNumberToExchangePoints(civilization.GetFishingGoods(), "pescado", "Pesca");
+            int goodsToExchange = pointsNumber * TRADE_POINTS_GOODS_RATIO;
+
+            civilization.ReduceFishingGoods(goodsToExchange);
+            civilization.IncreaseFishingPoints(pointsNumber);
+
+            Console.WriteLine($"Has intercambiado {goodsToExchange} unidades de pescado por {pointsNumber} Puntos de Pesca!");
+        }
+
+        private void TryExchangeHarvestingPoints()
+        {
+            if (civilization.GetHarvestingGoods() < TRADE_POINTS_GOODS_RATIO)
+            {
+                Console.WriteLine($"\nNo tienes suficientes unidad de cosecha (Min. {TRADE_POINTS_GOODS_RATIO})");
+                return;
+            }
+
+            int pointsNumber = ChooseNumberToExchangePoints(civilization.GetHarvestingGoods(), "cosecha", "Cosecha");
+            int goodsToExchange = pointsNumber * TRADE_POINTS_GOODS_RATIO;
+
+            civilization.ReduceHarvestingGoods(goodsToExchange);
+            civilization.IncreaseHarvestingPoints(pointsNumber);
+
+            Console.WriteLine($"Has intercambiado {goodsToExchange} unidades de cosecha por {pointsNumber} Puntos de Cosecha!");
+        }
+
+        private void TryExchangeMiningPoints()
+        {
+            if (civilization.GetMiningGoods() < TRADE_POINTS_GOODS_RATIO)
+            {
+                Console.WriteLine($"\nNo tienes suficientes unidad de mineral (Min. {TRADE_POINTS_GOODS_RATIO})");
+                return;
+            }
+
+            int pointsNumber = ChooseNumberToExchangePoints(civilization.GetMiningGoods(), "mineral", "Mineria");
+            int goodsToExchange = pointsNumber * TRADE_POINTS_GOODS_RATIO;
+
+            civilization.ReduceMiningGoods(goodsToExchange);
+            civilization.IncreaseMiningPoints(pointsNumber);
+
+            Console.WriteLine($"Has intercambiado {goodsToExchange} unidades de mineral por {pointsNumber} Puntos de Mineria!");
+        }
+
+        #endregion
+
+
         #region Checks
         private bool CheckPlayerWin()
         {
             if(civilization.GetMoney() >= MONEY_TO_WIN)
             {
-                Console.WriteLine($"\nHas conseguido {MONEY_TO_WIN} monedas!");
+                Console.WriteLine($"\nHas conseguido mas de {MONEY_TO_WIN} monedas!");
                 return true;
             }
 
@@ -460,6 +561,45 @@ namespace PyP2_ExamenIndividual1
                     else if(desiredNumber > maxNumber)
                     {
                         Console.WriteLine($"No tienes suficientes unidades de {good}, inserta una cantidad menor.");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Inserta una cantidad positiva");
+                    }
+                }
+                catch
+                {
+                    Console.WriteLine($"Inserta un número");
+                }
+            }
+
+            return number;
+        }
+
+        private int ChooseNumberToExchangePoints(int goodsNumber, string good, string point)
+        {
+            int maxNumber = goodsNumber / TRADE_POINTS_GOODS_RATIO;
+            bool validNumber = false;
+            int number = 0;
+
+            Console.WriteLine($"\nPuedes intercambiar desde {TRADE_POINTS_GOODS_RATIO} de unidades de {good} a por 1 punto de {point}");
+
+            Console.WriteLine($"\nInserta la cantidad de puntos de {point} que deseas obtener (Max. {maxNumber})");
+
+            while (!validNumber)
+            {
+                try
+                {
+                    int desiredNumber = int.Parse(Console.ReadLine());
+
+                    if (desiredNumber > 0 && desiredNumber <= maxNumber)
+                    {
+                        validNumber = true;
+                        number = desiredNumber;
+                    }
+                    else if (desiredNumber > maxNumber)
+                    {
+                        Console.WriteLine($"No tienes suficientes unidades de {good}, inserta una de puntos menor.");
                     }
                     else
                     {

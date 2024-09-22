@@ -152,7 +152,7 @@ namespace PyP2_ExamenIndividual1
 
         public int ReduceFarmingGoods(int quantity) => farmingGoods -= quantity;
         public int ReduceFishingGoods(int quantity) => fishingGoods -= quantity;
-        public int ReduceHarvestinGoods(int quantity) => harvestingGoods -= quantity;
+        public int ReduceHarvestingGoods(int quantity) => harvestingGoods -= quantity;
         public int ReduceMiningGoods(int quantity) => miningGoods -= quantity;
 
         public int GetFarmingGoodsEndOfTurn() => citizens.Count * GetFarmingPoints();
