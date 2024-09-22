@@ -61,11 +61,10 @@ namespace PyP2_ExamenIndividual1
                 Console.WriteLine("2.- Ver ciudadanos");
                 Console.WriteLine("3.- Ver bienes");
                 Console.WriteLine("4.- Vender Bienes");
-                Console.WriteLine("5.- Intercambiar Bienes");
-                Console.WriteLine("6.- Agregar un ciudadano");
-                Console.WriteLine("7.- Importar un ciudadano");
-                Console.WriteLine("8.- Cambiar bienes por puntos de habilidad");
-                Console.WriteLine("9.- Pasar Turno");
+                Console.WriteLine("5.- Agregar un ciudadano");
+                Console.WriteLine("6.- Importar un ciudadano");
+                Console.WriteLine("7.- Cambiar bienes por puntos de habilidad");
+                Console.WriteLine("8.- Pasar Turno");
 
                 int option = ChooseNumberOption(9);
 
@@ -84,18 +83,15 @@ namespace PyP2_ExamenIndividual1
                         SellGoods();
                         break;
                     case 5:
-                    TradeGoods();
-                    break;
-                    case 6:
                         AddCitizen();
                         break;
-                    case 7:
+                    case 6:
                         ImportCitizen();
                         break;
-                    case 8:
+                    case 7:
                         ExchangeGoodsForPoints();
                         break;
-                    case 9:
+                    case 8:
                     default:
                         SkipTurn();
                         turnEnded = true;
@@ -330,7 +326,7 @@ namespace PyP2_ExamenIndividual1
 
         private void SkipTurn()
         {
-
+            Console.WriteLine("\nHas pasado el turno!");
         }
 
         #endregion
@@ -369,7 +365,7 @@ namespace PyP2_ExamenIndividual1
             int moneyToObtain = quantityToSell * FARMING_GOODS_PRICE;
             civilization.IncreaseMoney(moneyToObtain);
 
-            Console.WriteLine($"\nHas obtenido {moneyToObtain} por {quantityToSell} unidades de carne");
+            Console.WriteLine($"\nHas obtenido {moneyToObtain} monedas por {quantityToSell} unidades de carne");
         }
 
         private void TrySellFishingGoods()
@@ -386,7 +382,7 @@ namespace PyP2_ExamenIndividual1
             int moneyToObtain = quantityToSell * FISHING_GOODS_PRICE;
             civilization.IncreaseMoney(moneyToObtain);
 
-            Console.WriteLine($"\nHas obtenido {moneyToObtain} por {quantityToSell} unidades de pescado");
+            Console.WriteLine($"\nHas obtenido {moneyToObtain} monedas por {quantityToSell} unidades de pescado");
         }
 
         private void TrySellHarvestingGoods()
@@ -403,7 +399,7 @@ namespace PyP2_ExamenIndividual1
             int moneyToObtain = quantityToSell * HARVESTING_GOODS_PRICE;
             civilization.IncreaseMoney(moneyToObtain);
 
-            Console.WriteLine($"\nHas obtenido {moneyToObtain} por {quantityToSell} unidades de cosecha");
+            Console.WriteLine($"\nHas obtenido {moneyToObtain} monedas por {quantityToSell} unidades de cosecha");
         }
 
         private void TrySellMiningGoods()
