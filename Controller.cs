@@ -11,7 +11,6 @@ namespace PyP2_ExamenIndividual1
     public class Controller
     {
         private Civilization civilization; 
-        private List<Citizen> citizens = new List<Citizen>();
 
         private int money;
 
@@ -129,20 +128,89 @@ namespace PyP2_ExamenIndividual1
 
         private void SeeCivilization()
         {
+            Console.WriteLine($"\nEstas jugando con la {civilization.name}:");
 
+            if (civilization.citizens.Count <= 0)
+            {
+                Console.WriteLine($"\nNo cuentas con ningun ciudadano.");
+                return;
+            }
+
+            Console.WriteLine($"Estadisticas de la Civilizacion: {civilization.GetFarmingPoints()} Farmeo || {civilization.GetFishingPoints()} Pesca || {civilization.GetHarvestingPoints()} Cosecha || {civilization.GetMiningPoints()} Mineria");          
         }
 
         private void SeeCitizens()
         {
+            if (civilization.citizens.Count <= 0)
+            {
+                Console.WriteLine($"\nNo cuentas con ningun ciudadano.");
+                return;
+            }
 
+            Console.WriteLine($"\nCuentas con los siguientes ciudadanos:");
+
+            int index = 0;
+
+            foreach (Citizen citizen in civilization.citizens)
+            {
+                index++;
+                Console.WriteLine($"{index}.- {citizen.name} - {citizen.GetFarmingPoints()} Farmeo || {citizen.GetFishingPoints()} Pesca || {citizen.GetHarvestingPoints()} Cosecha || {citizen.GetMiningPoints()} Mineria");
+            }
         }
 
         private void SeeGoods()
         {
+            Console.WriteLine($"\nCuentas con los siguientes bienes:");
 
+            Console.WriteLine($"Carne: {civilization.GetFarmingGoods()}");
+            Console.WriteLine($"Pescado: {civilization.GetFishingGoods()}");
+            Console.WriteLine($"Cosechas: {civilization.GetHarvestingGoods()}");
+            Console.WriteLine($"Minerales: {civilization.GetMiningGoods()}");
         }
 
         private void SellGoods()
+        {
+            Console.WriteLine($"\nSelecciona el bien que quieres vender:");
+
+            Console.WriteLine($"1.- Carne");
+            Console.WriteLine($"2.- Pescado");
+            Console.WriteLine($"3.- Cosechas");
+            Console.WriteLine($"4.- Minerales");
+            Console.WriteLine($"5.- Volver");
+
+            int option = ChooseNumberOption(5);
+
+            switch (option)
+            {
+                case 1:
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    break;
+                case 5:
+                    break;
+            }
+        }
+
+        private void TrySellFarmingGoods()
+        {
+
+        }
+
+        private void TrySellFishingGoods()
+        {
+
+        }
+
+        private void TrySellHarvestingGoods()
+        {
+
+        }
+
+        private void TrySellMiningGoods()
         {
 
         }

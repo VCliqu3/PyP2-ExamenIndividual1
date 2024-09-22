@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,16 +13,27 @@ namespace PyP2_ExamenIndividual1
         public Citizen originalCitizen;
         public List<Citizen> citizens;
 
-        public Civilization(string name,Citizen originalCitizen)
+        public int farmingGoods;
+        public int fishingGoods;
+        public int harvestingGoods;
+        public int miningGoods;
+
+        public Civilization(string name,Citizen originalCitizen, int farmingGoods, int fishingGoods, int harvestingGoods, int miningGoods)
         {
             this.name = name;
             this.originalCitizen = originalCitizen;
             citizens = new List<Citizen>();
+
+            this.farmingGoods = farmingGoods;
+            this.fishingGoods = fishingGoods;
+            this.harvestingGoods = harvestingGoods;
+            this.miningGoods = miningGoods;
         }
 
         public abstract Citizen GetOriginalCitizen();
 
 
+        #region Interfaces
         public int GetFarmingPoints() 
         {
             int citizenCount = citizens.Count;
@@ -113,5 +125,29 @@ namespace PyP2_ExamenIndividual1
                 citizen.IncreaseMiningPoints(quantity);
             }
         }
+        #endregion
+
+        public int GetFarmingGoods() => farmingGoods;
+        public int GetFishingGoods() => fishingGoods;
+        public int GetHarvestingGoods() => harvestingGoods;
+        public int GetMiningGoods() => miningGoods;
+
+        public int IncreaseFarmingGoods(int quantity) => farmingGoods += quantity;
+        public int IncreaseFishingGoods(int quantity) => farmingGoods += quantity;
+        public int IncreaseHarvestinGoods(int quantity) => farmingGoods += quantity;
+        public int IncreaseMiningGoods(int quantity) => farmingGoods += quantity;
+
+        public int ReduceFarmingGoods(int quantity) => farmingGoods -= quantity;
+        public int ReduceFishingGoods(int quantity) => farmingGoods -= quantity;
+        public int ReduceHarvestinGoods(int quantity) => farmingGoods -= quantity;
+        public int ReduceMiningGoods(int quantity) => farmingGoods -= quantity;
+
+        public int GetFarmingGoodsEndOfTurn() => GetFarmingGoods() * GetFarmingPoints();
+        public int GetFishingGoodsEndOfTurn() => GetFishingGoods() * GetFishingPoints();
+        public int GetHarvestingGoodsEndOfTurn() => GetHarvestingGoods() * GetHarvestingPoints();
+        public int GetMiningGoodsEndOfTurn() => GetMiningGoods() * GetMiningPoints();
+
+
+
     }
 }
