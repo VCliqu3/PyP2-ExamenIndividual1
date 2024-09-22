@@ -33,17 +33,17 @@ namespace PyP2_ExamenIndividual1
 
         public void IncreaseFarmingPoints(int quantity) => farmingPoints += quantity;
 
-        public int GetFishingPoints() => farmingPoints;
+        public int GetFishingPoints() => fishingPoints;
 
-        public void IncreaseFishingPoints(int quantity) => farmingPoints += quantity;
+        public void IncreaseFishingPoints(int quantity) => fishingPoints += quantity;
 
-        public int GetHarvestingPoints() => farmingPoints;
+        public int GetHarvestingPoints() => harvestingPoints;
 
-        public void IncreaseHarvestingPoints(int quantity) => farmingPoints += quantity;
+        public void IncreaseHarvestingPoints(int quantity) => harvestingPoints += quantity;
 
-        public int GetMiningPoints() => farmingPoints;
+        public int GetMiningPoints() => miningPoints;
 
-        public void IncreaseMiningPoints(int quantity) => farmingPoints += quantity;
+        public void IncreaseMiningPoints(int quantity) => miningPoints += quantity;
 
     }
 }
