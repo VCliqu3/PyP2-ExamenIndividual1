@@ -18,6 +18,10 @@ namespace PyP2_ExamenIndividual1
         public int harvestingGoods;
         public int miningGoods;
 
+        public int money;
+
+        private const int INITIAL_MONEY = 100;
+
         public Civilization(string name,Citizen originalCitizen, int farmingGoods, int fishingGoods, int harvestingGoods, int miningGoods)
         {
             this.name = name;
@@ -28,10 +32,19 @@ namespace PyP2_ExamenIndividual1
             this.fishingGoods = fishingGoods;
             this.harvestingGoods = harvestingGoods;
             this.miningGoods = miningGoods;
+
+            money = INITIAL_MONEY;
         }
 
         public abstract Citizen GetOriginalCitizen();
 
+        public void AddOriginalCitizens(int quantity)
+        {
+            for(int i = 0; i < quantity; i++)
+            {
+                citizens.Add(GetOriginalCitizen());
+            }
+        }
 
         #region Interfaces
         public int GetFarmingPoints() 
@@ -133,21 +146,23 @@ namespace PyP2_ExamenIndividual1
         public int GetMiningGoods() => miningGoods;
 
         public int IncreaseFarmingGoods(int quantity) => farmingGoods += quantity;
-        public int IncreaseFishingGoods(int quantity) => farmingGoods += quantity;
-        public int IncreaseHarvestinGoods(int quantity) => farmingGoods += quantity;
-        public int IncreaseMiningGoods(int quantity) => farmingGoods += quantity;
+        public int IncreaseFishingGoods(int quantity) => fishingGoods += quantity;
+        public int IncreaseHarvestinGoods(int quantity) => harvestingGoods += quantity;
+        public int IncreaseMiningGoods(int quantity) => miningGoods += quantity;
 
         public int ReduceFarmingGoods(int quantity) => farmingGoods -= quantity;
-        public int ReduceFishingGoods(int quantity) => farmingGoods -= quantity;
-        public int ReduceHarvestinGoods(int quantity) => farmingGoods -= quantity;
-        public int ReduceMiningGoods(int quantity) => farmingGoods -= quantity;
+        public int ReduceFishingGoods(int quantity) => fishingGoods -= quantity;
+        public int ReduceHarvestinGoods(int quantity) => harvestingGoods -= quantity;
+        public int ReduceMiningGoods(int quantity) => miningGoods -= quantity;
 
-        public int GetFarmingGoodsEndOfTurn() => GetFarmingGoods() * GetFarmingPoints();
-        public int GetFishingGoodsEndOfTurn() => GetFishingGoods() * GetFishingPoints();
-        public int GetHarvestingGoodsEndOfTurn() => GetHarvestingGoods() * GetHarvestingPoints();
-        public int GetMiningGoodsEndOfTurn() => GetMiningGoods() * GetMiningPoints();
+        public int GetFarmingGoodsEndOfTurn() => citizens.Count * GetFarmingPoints();
+        public int GetFishingGoodsEndOfTurn() => citizens.Count * GetFishingPoints();
+        public int GetHarvestingGoodsEndOfTurn() => citizens.Count * GetHarvestingPoints();
+        public int GetMiningGoodsEndOfTurn() => citizens.Count * GetMiningPoints();
 
-
+        public int GetMoney() => money;
+        public void IncreaseMoney(int quantity) => money += quantity;
+        public void ReduceMoney(int quantity) => money -= quantity;
 
     }
 }

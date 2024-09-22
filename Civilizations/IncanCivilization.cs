@@ -10,10 +10,10 @@ namespace PyP2_ExamenIndividual1
     {
         public const string NAME = "Civilización Inca";
 
-        public const int STARTING_FARMING_GOODS = 100;
-        public const int STARTING_FISHING_GOODS = 50;
-        public const int STARTING_HARVESTING_GOODS = 150;
-        public const int STARTING_MINING_GOODS = 200;
+        public const int STARTING_FARMING_GOODS = 10;
+        public const int STARTING_FISHING_GOODS = 5;
+        public const int STARTING_HARVESTING_GOODS = 15;
+        public const int STARTING_MINING_GOODS = 20;
         public IncanCivilization() : base(NAME, new Inca(), STARTING_FARMING_GOODS, STARTING_FISHING_GOODS, STARTING_HARVESTING_GOODS, STARTING_MINING_GOODS) { }
 
         public override Citizen GetOriginalCitizen() => new Inca();
